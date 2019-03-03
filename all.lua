@@ -143,7 +143,7 @@ do
   -- each time a table is collected, remark it for finalization
   -- on next cycle
   mt.__gc = function (o)
-     stderr:write'.'    -- mark progress
+     --stderr:write'.'    -- mark progress
      local n = setmetatable(o, mt)   -- remark it
    end
    local n = setmetatable({}, mt)    -- create object
@@ -155,6 +155,10 @@ f()
 
 dofile('db.lua')
 assert(dofile('calls.lua') == deep and deep)
+dofile('errors.lua')
+
+dofile("luamem_wrapapi.lua")
+
 olddofile('strings.lua')
 olddofile('literals.lua')
 dofile('tpack.lua')
@@ -178,7 +182,6 @@ dofile('vararg.lua')
 dofile('closure.lua')
 dofile('coroutine.lua')
 dofile('goto.lua', true)
-dofile('errors.lua')
 dofile('math.lua')
 dofile('sort.lua', true)
 dofile('bitwise.lua')
