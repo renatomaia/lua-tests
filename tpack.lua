@@ -204,6 +204,9 @@ do
 
   checkerror("contains zeros", pack, "z", "alo\0");
 
+  checkerror("too short", unpack, "z", "alo");
+  checkerror("too short", unpack, "z", "");
+
   for i = 2, NB do
     local s1 = pack("s" .. i, s)
     assert(unpack("s" .. i, s1) == s and #s1 == #s + i)
